@@ -1,3 +1,5 @@
 package com.example.recylerviewexample
 
-data class User(var imgUrl: String, var name: String, var description: String)
+import java.io.Serializable
+
+data class User(var name: String, var password: String) : Serializable

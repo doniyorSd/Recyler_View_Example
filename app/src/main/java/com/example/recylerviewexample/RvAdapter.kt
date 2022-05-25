@@ -1,23 +1,33 @@
 package com.example.recylerviewexample
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recylerviewexample.databinding.ItemFilmBinding
 
-class RvAdapter(var list: ArrayList<User>) : RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
+class RvAdapter(var list: ArrayList<User>, var onClick: OnClickListener) :
+    RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
 
     // shablon bilan malumotni bog'lash
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //user ("rasm","marvel 1","desc")
-        //user malumot onBind ga keladi
-        fun onBind(user: User) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun onBind(user: User, position: Int) {
             val bind = ItemFilmBinding.bind(itemView)
-//            Glide.with(itemView).load(user.imgUrl).into(bind.iv)
-            bind.tvName.text = user.name
-            bind.tvDescription.text = user.description
+            val anim = AnimationUtils.loadAnimation(itemView.context, R.anim.item_anim)
+            itemView.startAnimation(anim)
+
+            bind.tv1.text = user.name
+            bind.tv2.text = user.password
+
+            bind.root.setOnClickListener {
+                onClick.onRootClick(user, position)
+            }
+            bind.ivDelete.setOnClickListener {
+                onClick.onclickUser(user, position)
+            }
         }
     }
 
@@ -29,11 +39,17 @@ class RvAdapter(var list: ArrayList<User>) : RecyclerView.Adapter<RvAdapter.MyVi
 
     // malumot ozi keladi
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(list[position], position)
     }
 
     // item ning sonini olish
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    interface OnClickListener {
+        fun onclickUser(user: User, position: Int)
+
+        fun onRootClick(user: User, position: Int)
     }
 }

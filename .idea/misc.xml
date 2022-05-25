@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.107" />
+        <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/drawable/ic_car.xml" value="0.1" />
+        <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/layout/activity_second.xml" value="0.19010416666666666" />
         <entry key="..\:/itAndroid1/RecylerViewExample/app/src/main/res/layout/item_film.xml" value="0.22" />
       </map>
     </option>
